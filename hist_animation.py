@@ -24,9 +24,9 @@ def main():
  
     fh.close()
 
-    bin_width_V= float(input('input bin size! : '))   
-    bin_width_mumax= float(input('input bin size! : '))
-    bin_width_mass= float(input('input bin size! : ')) 
+    bin_width_V= float(input('input bin size! (default: 0.000001): '))   
+    bin_width_mumax= float(input('input bin size! (default: 500): '))
+    bin_width_mass= float(input('input bin size! (default:0.1): ')) 
 
     # create figure object
     fig, (ax0, ax1, ax2) = plt.subplots(3, 1, figsize=(8, 6))
@@ -84,7 +84,7 @@ def main():
         print(" Epoch : %d" %t)
         return fig,
 
-    simulation = animation.FuncAnimation(fig, updateHist, frames=240, blit=True)
+    simulation = animation.FuncAnimation(fig, updateHist, frames=len(T), blit=True)
     simulation.save("%s" % (fname.replace("pkl", "gif")), writer='PillowWriter', fps=1)
 
 
